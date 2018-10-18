@@ -1,0 +1,41 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block js %}
+    <!-- Smooth Scroll -->
+    <script src="{% static 'js/home/smooth-scroll.js' %}"></script>
+    <script src="{% static 'js/home/lightbox.min.js' %}"></script>
+
+    <!-- All JS plugin Triggers -->
+    <script src="{% static 'js/home/main.js' %}"></script>
+{% endblock %}
+{% block application %}
+
+<!-- Hero Area Section -->
+
+<section id="hero-area">
+<div class="container">
+    <div class="row">
+<div class="col-md-12">
+        <h1 class="title">Бесплатный онлайн конструктор<br> юридических документов</h1>
+        <h2 class="subtitle">Все необходимое, чтобы получить документ, не выходя из дома</h2>
+
+        <img class="col-md-6 col-sm-6 col-xs-12 animated fadeInLeft" src="{% static 'images/home/hero/macbook.png' %}" alt="">
+
+        <div class="col-md-6 col-sm-6 col-xs-12 animated fadeInRight delay-0-5">
+        <p>Наш онлайн-сервис поможет подготовить все необходимые юридические документы: договоры, расписки, претензии, доверенности и многое другое.</p>
+        <div class="buttons">
+            <a href="{% url 'account_signup'%}" class="btn btn-common btn-lg"><i class="fa fa-user-plus" aria-hidden="true"></i> Регистрация</a>
+            <a href="{% url 'account_login'%}" class="btn btn-primary btn-lg"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>
+        </div>
+        </div>
+
+</div>
+
+    </div>
+</div>
+</section>
+
+<!-- Hero Area Section End-->
+
+
+{% endblock %}

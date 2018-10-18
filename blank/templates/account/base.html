@@ -1,0 +1,20 @@
+{% load bootstrap3 %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    {% bootstrap_css %}
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+{% block application %}
+{% endblock %}
+{% bootstrap_javascript %}
+</body>
+</html>

@@ -1,0 +1,59 @@
+{% extends 'cabinet/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% load strip %}
+{% block js %}
+    <script src="{% static 'js/cabinet/jquery.ns-autogrow.min.js' %}"></script>
+    <script>
+        var blank_id = {{blank.id}};
+    </script>
+    <script src="{% static 'js/cabinet/blank.js' %}"></script>
+    
+{% endblock %}
+{% block application %}
+<div class="row">
+    <div class="col col-xs-12">
+        <h2 class="text-center">{{blank.title}}</h2>
+        <hr>
+        {% if blank.description|default_if_none:''|strip %}
+            {{blank.description|safe}}
+            <hr>
+        {% endif %}
+        
+        {% if blank.text|default_if_none:''|strip %}
+        <div id="content-blank">
+            {{blank.text|safe}}
+        </div>
+        <form id="form-blank" method="POST" action="{% url 'cabinet:download' %}">
+            {% csrf_token %}
+            {{form.as_p}}
+            {% buttons %}
+                {% if bookmark %}
+                    <a class="btn btn-save" id="bookmark-add" href="#"><i class="fa fa-bookmark" aria-hidden="true"></i> Удалить c закладки</a> 
+                {% else %}
+                    <a class="btn btn-save" id="bookmark-add" href="#"><i class="fa fa-bookmark" aria-hidden="true"></i> Добавить в закладки</a>
+                {% endif %}
+                <button type="submit" class="btn btn-save"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Сохранить документ</button>
+            {% endbuttons %}
+        </form>
+        {% endif %}
+        <hr>
+        <h4>Комментарии: <span id="comment-count">{{blank.comment_set.count}}</span></h4>
+        <form id="form-comment" method="POST" action="" novalidate>
+            {% csrf_token %}
+            {% bootstrap_field  comment_form.body %}
+            <button type="submit" class="btn btn-save" disabled="disabled">Добавить комментарий</button>
+        </form>
+        <div class="comments">
+            {% for comment in blank.comment_set.all %}
+                <div class="comment">
+                    <p class="author">{{comment.author.get_full_name}} - <span class="date">{{comment.date_added}}</span></p>
+                    {{comment.body|linebreaks}}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+</div>
+<div id="snackbar"></div>
+{% endblock %}

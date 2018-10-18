@@ -1,0 +1,25 @@
+{% extends 'cabinet/base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% block application %}
+<div class="row">
+    <div class="col col-xs-12">
+        <h1 class="text-center">{{title}}</h1>
+        <hr>
+        {% if success %}
+            <div class="alert alert-success">
+                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{success}}
+            </div>
+        {% endif %}
+        <form id="form-blank" method="POST" action="{% url 'cabinet:profile' %}">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+            <button type="submit" class="btn btn-save">Сохранить</button>
+            {% endbuttons %}
+        </form>
+    </div>
+</div>
+<div id="snackbar">Заполните все данные текущего документа</div>
+{% endblock %}

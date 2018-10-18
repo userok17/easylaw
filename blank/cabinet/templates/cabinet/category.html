@@ -1,0 +1,36 @@
+{% extends 'cabinet/base.html' %}
+{% load strip %}
+{% block application %}
+<div class="row">
+    <div class="col col-xs-12">
+        {% if category.description|default_if_none:''|strip %}
+            {{category.description|safe}}
+            <hr>
+        {% endif %}
+        
+        {% if blanks|length > 0%}
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover ">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Список документов</th>
+                            <th class="text-center">Контент</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for blank in blanks %}
+                            <tr>
+                                <td>{{blank.title}}</td>
+                                <td><a href="{% url 'cabinet:blank' category.id blank.id %}">Показать</a></td>
+                            </tr>
+                        {% endfor %}
+                        
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>Нет добавленных бланков в текущей категории</p>
+        {% endif %}        
+    </div>
+</div>
+{% endblock %}

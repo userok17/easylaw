@@ -1,0 +1,19 @@
+{% extends 'home/base.html' %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block title %}Потвердите ваш e-mail{% endblock %}
+{% block application %}
+<section class="container">
+    <div class="row">
+        <div class="col col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+            <h1>{% trans "Verify Your E-mail Address" %}</h1>
+            
+            {% url 'account_email' as email_url %}
+            
+            <p>На Ваш адрес электронной почты отправлено письмо для активации личного кабинета</p>
+            
+
+        </div>
+    </div>
+</section>
+{% endblock %}

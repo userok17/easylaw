@@ -1,0 +1,111 @@
+{% load bootstrap3 %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{{title}}{% endblock %}</title>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    {% bootstrap_css %}
+    {% block css %}{% endblock %}
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/cabinet/style.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'cabinet:categories' %}"><i class="fa fa-briefcase"></i>Личный кабинет</a>
+            </div>
+            
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'cabinet:bookmark' %}"><i class="fa fa-bookmark" aria-hidden="true"></i>Закладки</a></li>
+                    <li><a href="{% url 'cabinet:profile' %}"><i class="fa fa-user" aria-hidden="true"></i>Профиль</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'account_logout'%}"><i class="fa fa-sign-out" aria-hidden="true"></i>Выйти</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+    
+        </div><!-- /.container-fluid -->
+    </div>
+</nav>
+
+<div class="logo">
+    <a href="{% url 'cabinet:categories' %}"><img src="{% static 'images/logo.png' %}" alt=""></a>
+</div>
+<div class="container">
+    <div class="row">
+        <nav class="col col-sm-3">
+            <ul class="vertical-menu">
+                {% for category in nav_categories %}
+                    {% if category_id == category.id %}
+                        <li><a class="active" href="{% url 'cabinet:category' category.id %}">{{category.title}}</a></li>
+                    {% else %}
+                        <li><a href="{% url 'cabinet:category' category.id %}">{{category.title}}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
+        <div class="col col-sm-9">
+            {% block application %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col col-xs-12">
+                <p>&copy; easylaw.1rpi.ru</p>
+            </div>
+        </div>
+    </div>
+</footer>
+{% bootstrap_javascript %}
+{% block js %}{% endblock %}
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter42346704 = new Ya.Metrika({
+                    id:42346704,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/42346704" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>

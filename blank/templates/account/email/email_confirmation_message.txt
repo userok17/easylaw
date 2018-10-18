@@ -1,0 +1,10 @@
+{% load account %}
+{% load i18n %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+
+Для активации учетной записи личного кабинета на сайте {{ site_domain }} перейдите по ссылке
+
+{{ activate_url }}
+
+Данное письмо отправлено почтовым роботом сервера {{ site_domain }} и не требует ответа. © Все права защищены. {{ site_domain }}
+{% endblocktrans %}

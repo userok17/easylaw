@@ -1,0 +1,264 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 80px;
+}
+h1{
+    font-size: 26px;
+}
+a{
+    color: #3D556D;
+}
+.btn-save {
+    background-color: #3D556D;
+    border-color: #3D556D;;
+    color: #fff;
+}
+.btn-save:hover {
+    background-color: #506478;
+    border-color: #506478;
+    color: #fff;
+}
+.btn-save:focus {
+    color: #fff;
+}
+section{
+    margin-bottom: 60px;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #34495e;
+  color: #fff;
+  overflow: hidden;
+}
+footer p{
+    line-height: 60px;
+}
+
+/*
+ * Начало Horizontal Menu
+ */
+.navbar-default {
+    background: #303030;
+    border: medium none;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #fff;
+}
+.navbar-default .navbar-nav li a, .navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus{
+    color: #fff;
+}
+.navbar-default i.fa{
+    margin-right: 10px;
+}
+/*
+ * Конец Horizontal Menu
+ */
+
+/*
+ * Начало Логотип
+ */
+
+div.logo{
+    background-color: #34495E;
+    text-align: center;
+    margin-bottom: 30px;
+}
+div.logo img{
+    height: 90px;
+}
+/*
+ * Конец Логотип
+ */
+
+/*
+ * Начало Vertical Menu
+ */ 
+ul.vertical-menu  {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+}
+
+
+ul.vertical-menu li a {
+    display: block;
+    color: #000;
+    padding: 16px;
+    text-decoration: none;
+}
+
+/* Change the link color on hover */
+ul.vertical-menu li a:hover{
+    background-color: #3D556D;
+    color: white;
+}
+ul.vertical-menu li a.active{
+    background-color: #34495E;
+    color: white;
+}
+/*
+ * Конец Vertical Menu
+ */ 
+span.editable{
+    background-color: #D6D6D6;
+    color: #666;
+}
+span.editable.error{
+    background-color: #FCD1D1;
+    color: maroon;
+}
+input.editable {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555;
+    font-size: 14px;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+/*
+ * Начало Snackbar Уведомление
+ */
+ /* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    top: 30px; /* 30px from the bottom */
+}
+#snackbar.error{
+  background-color: #FCD1D1; /* Black background color */
+  color: maroon; /* White text color */
+}
+#snackbar.success{
+  background-color: #DFF0D8;
+  color: #3c763d;
+}
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {top: 30px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {top: 30px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+}
+/*
+ * Конец Snackbar Уведомление
+ */
+
+/*
+ * Начало Список категорий и бланк
+ */
+
+table thead tr th{
+    background-color: #F2F2F2;
+    border-color: #F2F2F2 !important;
+    font-weight: normal;
+    /*text-align: left !important;*/
+}
+table thead tr th:nth-child(2){
+    width: 200px;
+}
+table thead tr th, table tbody tr td{
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+table tbody tr td:nth-child(2){
+    text-align: center !important;
+}
+table tbody tr td:nth-child(2) a{
+    border: 1px solid #3D556D;
+    padding: 5px;
+    border-radius: 5px;
+}
+table tbody tr td:nth-child(2) a:hover{
+    background-color: #3D556D;
+    color: #fff;
+    text-decoration: none;
+}
+table tbody tr:nth-child(even){
+    background-color: #F3F6F8;
+}
+
+/*
+ * Конец Список категорий и бланк
+ */
+
+/*
+ * Начало Бланк
+ */
+#content-blank{
+    background-color: #f6f6f6;
+    padding: 30px;
+    border: 1px solid #BBB;
+}
+/*
+ * Конец Бланк
+ */
+
+/*
+ * Начало Комментарии
+ */
+form{
+  margin: 15px 0;
+}
+#form-comment textarea{
+    height: 80px;
+}
+.comment{
+  padding: 10px 0;
+}
+.author{
+  color: #7B8590;
+}
+.author span.date{
+  font-size: 12px;
+}
+/*
+ * Конец Комментарии
+ */
